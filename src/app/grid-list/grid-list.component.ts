@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import {Component, Input, OnInit} from '@angular/core';
 
 @Component({
   selector: 'app-grid-list',
@@ -17,18 +17,15 @@ import { Component, OnInit } from '@angular/core';
   styles: []
 })
 export class GridListComponent implements OnInit {
-  public columnDefs = [
-    {headerName: 'Make', field: 'make' },
-    {headerName: 'Model', field: 'model' },
-    {headerName: 'Price', field: 'price'}
-  ];
 
-  public rowData = [
-    { make: 'Toyota', model: 'Celica', price: 35000 },
-    { make: 'Ford', model: 'Mondeo', price: 32000 },
-    { make: 'Porsche', model: 'Boxter', price: 72000 }
-  ];
-  constructor() { }
+  @Input('appColumnDefs')
+  public columnDefs;
+
+  @Input('appRowData')
+  public rowData ;
+
+  constructor() {
+  }
 
   public ngOnInit() {
   }
