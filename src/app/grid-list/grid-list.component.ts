@@ -1,4 +1,6 @@
 import {Component, Input, OnInit} from '@angular/core';
+import {DefaultOptionsFactoryService} from './default-options-factory.service';
+import {GridOptions} from 'ag-grid-community';
 
 @Component({
   selector: 'app-grid-list',
@@ -9,8 +11,8 @@ import {Component, Input, OnInit} from '@angular/core';
     <ag-grid-angular
       style="width: 500px; height: 500px;"
       class="ag-theme-balham"
-      [rowData]="rowData"
-      [columnDefs]="columnDefs"
+      [rowData]="rowData | async"
+      [gridOptions]="gridOptions"
     >
     </ag-grid-angular>
   `,
@@ -18,16 +20,18 @@ import {Component, Input, OnInit} from '@angular/core';
 })
 export class GridListComponent implements OnInit {
 
-  @Input('appColumnDefs')
-  public columnDefs;
-
   @Input('appRowData')
-  public rowData ;
+  public rowData: Promise<any>;
 
-  constructor() {
+  public gridOptions: GridOptions;
+
+  constructor(
+    private readonly gridOptionsProvider: DefaultOptionsFactoryService,
+  ) {
   }
 
   public ngOnInit() {
+    this.gridOptions = this.gridOptionsProvider.make();
   }
 
 }
