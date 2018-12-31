@@ -1,6 +1,7 @@
 import {async, TestBed} from '@angular/core/testing';
 import {AppComponent} from './app.component';
 import {GridListModule} from './grid-list/grid-list.module';
+import {HttpClientModule} from '@angular/common/http';
 
 describe('AppComponent', () => {
   beforeEach(async(() => {
@@ -9,6 +10,7 @@ describe('AppComponent', () => {
         AppComponent
       ],
       imports: [
+        HttpClientModule,
         GridListModule,
       ],
     }).compileComponents();

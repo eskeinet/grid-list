@@ -3,7 +3,6 @@ import {TestBed} from '@angular/core/testing';
 import {DefaultOptionsFactoryService} from './default-options-factory.service';
 import {GridListModule} from './grid-list.module';
 import {GridOptions} from 'ag-grid-community';
-import {ColDef} from 'ag-grid-community/dist/lib/entities/colDef';
 
 describe('DefaultOptionsFactoryService', () => {
   beforeEach(() => TestBed.configureTestingModule({
@@ -27,10 +26,6 @@ describe('DefaultOptionsFactoryService', () => {
       expect(gridOptions.columnDefs).toBeDefined();
       expect(gridOptions.columnDefs).toEqual(jasmine.any(Array));
       expect(gridOptions.columnDefs.length).toBeGreaterThan(0);
-      gridOptions.columnDefs.forEach((columnDef: ColDef) => {
-        expect(columnDef).toEqual(jasmine.any(Object));
-        expect(columnDef.headerName).toBeDefined();
-      });
     });
   });
 });

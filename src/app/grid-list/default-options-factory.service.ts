@@ -1,17 +1,16 @@
-import {Inject, Injectable} from '@angular/core';
+import {Injectable} from '@angular/core';
 import {GridOptions} from 'ag-grid-community';
-import {ColDef} from 'ag-grid-community/dist/lib/entities/colDef';
-import {COLUMN_DEFINITIONS_TOKEN} from './column-definitions-provider.token';
+import {ColumnDefinitionsFactoryService} from './column-definitions-factory.service';
 
 @Injectable()
 export class DefaultOptionsFactoryService {
 
-  constructor(@Inject(COLUMN_DEFINITIONS_TOKEN) private columnDefinitions: ColDef[],) {
+  constructor(private columnDefinitionsFactory: ColumnDefinitionsFactoryService) {
   }
 
   public make(): GridOptions {
     return {
-      columnDefs: this.columnDefinitions,
+      columnDefs: this.columnDefinitionsFactory.make(),
 
       rowBuffer: 0,
       enableColResize: true,

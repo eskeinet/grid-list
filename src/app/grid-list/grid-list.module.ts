@@ -4,6 +4,7 @@ import { GridListComponent } from './grid-list.component';
 import {AgGridModule} from 'ag-grid-angular';
 import {DefaultOptionsFactoryService} from './default-options-factory.service';
 import {COLUMN_DEFINITIONS_TOKEN} from './column-definitions-provider.token';
+import {ColumnDefinitionsFactoryService} from './column-definitions-factory.service';
 
 @NgModule({
   declarations: [GridListComponent],
@@ -14,6 +15,7 @@ import {COLUMN_DEFINITIONS_TOKEN} from './column-definitions-provider.token';
   exports: [GridListComponent],
   providers: [
     DefaultOptionsFactoryService,
+    ColumnDefinitionsFactoryService,
     {
       provide: COLUMN_DEFINITIONS_TOKEN,
       useValue: [
